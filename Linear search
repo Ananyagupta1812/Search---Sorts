@@ -1,0 +1,40 @@
+// Linear Search of Array in CPP
+
+
+#include <iostream>
+using namespace std;
+int Linear_search(int arr[], int n, int key)
+{
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] == key)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int main()
+{
+    int n;
+    cout << "Enter the limit of the array: ";
+    cin >> n;
+    int arr[n], key;
+    cout << "Enter the elements of the array: "<< endl;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+    cout << "Enter the element to be found:";  
+    cin >> key;
+    int result = Linear_search(arr, n, key);
+    if (result == -1)
+    {
+        cout << "Element not found!!" << endl;
+    }
+    else
+    {
+        cout << "Element found at index " << result+1<< endl;
+    }
+}
