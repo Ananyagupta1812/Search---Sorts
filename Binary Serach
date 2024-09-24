@@ -1,0 +1,51 @@
+// Binary Search of Array in CPP
+
+#include <iostream>
+using namespace std;
+
+int Binary_search(int arr[], int n, int key)
+{   
+    int start=0, end=n-1;
+    int mid=(start+end)/2;
+    //int mid= start+ (end-start)/2; optimised
+    while(start<=end)
+    {
+        if(arr[mid]==key)
+            return mid;
+            
+        if(key>arr[mid])
+           start=mid+1;
+           
+        else 
+            end=mid-1;
+        
+        mid=(start+end)/2;
+        //mid= start+ (end-start)/2;
+    }
+    
+    return -1;
+}
+
+int main()
+{
+    int n;
+    cout << "Enter the limit of the array: ";
+    cin >> n;
+    int arr[n], key;
+    cout << "Enter the elements of the array: "<< endl;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+    cout << "Enter the element to be found:";
+    cin >> key;
+    int result = Binary_search(arr, n, key);
+    if (result == -1)
+    {
+        cout << "Element not found!!" << endl;
+    }
+    else
+    {
+        cout << "Element found at index " << result+1<< endl;
+    }
+}
