@@ -1,0 +1,87 @@
+//Knapsack problem using Greedy Approach. 
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void swap(int arr[], int a, int b);
+void bubbleSort(int arr[], int p[], int w[], int n);
+void print(int arr[], int n);
+void findRatio(int n, int p[], int w[], int pwRatio[]);
+void selectItem(int n, int ksWeight, int p[], int w[], int pwRatio[]);
+
+int main(){
+    int n;
+    printf("Enter total number of items: ");
+    scanf("%d", &n);
+    int p[n];
+    int w[n];
+    int pwRatio[n];
+    
+    printf("Enter the profits: ");
+    for(int i = 0; i < n; i++) {
+        scanf("%d", &p[i]);
+    }
+    printf("Enter the weights: ");
+    for(int i = 0; i < n; i++) {
+        scanf("%d", &w[i]);
+    }
+    int ksWeight = 60;
+    findRatio(n, p, w, pwRatio);
+    bubbleSort(pwRatio, p, w, n);
+    selectItem(n, ksWeight, p, w, pwRatio);
+}
+
+void print(int arr[], int n){
+    printf("Array: ");
+    for (int i = 0; i < n ; i++){
+        printf("%d  ", arr[i]);
+    }
+    printf("\n");
+}
+
+void findRatio(int n, int p[], int w[], int pwRatio[]){
+    for (int i = 0 ; i < n ; i ++){
+        pwRatio[i] = p[i] / w[i];
+    }
+}
+
+void swap(int arr[], int a, int b){
+    int c = arr[a];
+    
+    arr[a] = arr[b];
+    arr[b] = c;
+}
+void bubbleSort(int arr[], int p[], int w[], int n)
+{
+    int i, j;
+    for (i = 0; i < n-1; i++){
+        for (j = 0; j < n-i-1; j++){
+            if (arr[j] < arr[j+1]){
+                swap(arr, j, j+1);
+                swap(p, j, j+1);
+                swap(w, j, j+1);
+            }
+        }
+    }
+}
+
+void selectItem(int n, int ksWeight, int p[], int w[], int pwRatio[]){
+    int filledWeight = 0, profits = 0;
+    for (int i = 0 ; i < n ; i++){
+        int available = ksWeight - filledWeight;
+        if (filledWeight < ksWeight){
+            if (available > w[i]){
+                filledWeight += w[i];
+                profits += p[i];
+            }
+            else{
+                filledWeight += available;
+                profits += available*p[i]/w[i];
+            }
+        }
+        else{
+            continue;
+        }   
+    }
+    printf("Max. Profit : %d", profits);
+}
