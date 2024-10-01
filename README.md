@@ -1,6 +1,6 @@
 ### Searches & Sorts (in C++)
 1. Quick Sort
-2. Dijkstra Algorithm
+2. Dijkstra Algorithm- Shotest path problem
 3. Binary Search
 4. Linear Search
 5. Knapsack Problem- Greedy approach
