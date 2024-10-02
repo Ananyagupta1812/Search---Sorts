@@ -5,3 +5,4 @@
 4. Linear Search
 5. Knapsack Problem- Greedy approach
 6. DFS- Depth First Search
+7. BFS- Breath First Search
